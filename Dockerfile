@@ -43,7 +43,7 @@ ADD apache/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 
 ADD supervisor/apache.conf /etc/supervisor/conf.d/apache.conf
 
-
+ADD sample_site/index.php /var/www/index.php
 
 EXPOSE 80
 EXPOSE 443

@@ -27,6 +27,11 @@ Or start the docker container in production-mode
 
   ```
     docker run -d --name=apache2-php5-fpm -v /path/to/www/:/var/www/ quay.io/egbertp/apache2-php5-fpm:latest
+  ````
+
+For example:
+
+  ````
     docker run -d --name=apache2-php5-fpm -v /Users/egbert/Documents/httpdocs/:/var/www/ quay.io/egbertp/apache2-php5-fpm:latest
   ```
 
@@ -56,6 +61,8 @@ Stop the docker container
 
 Install ``nsenter`` for inspecting containers
 ---------------------------------------------
+
+Source / credits: https://gist.github.com/mmerickel/e213fbe7ec7728e4d043
 
 An appropriate way to inspect a running container is via ``nsenter``. It
 can drop us into a shell inside of the container's filesystem and inspect its
@@ -89,17 +96,6 @@ running processes. Unfortunately it only works on linux, so we will create a
 
 ## How to use it?
 
-First, figure out the PID of the container you want to enter:
-
-    $ PID=$(docker inspect --format {{.State.Pid}} <container_name_or_ID>)
-
-    $ PID=$(docker inspect --format {{.State.Pid}} 4dd752450eea)
-
-Then enter the container:
-
-    $ nsenter --target $PID --mount --uts --ipc --net --pid
-    $ docker-enter --target $PID --mount --uts --ipc --net --pid
-
-
+    $ docker-enter <containerID>
 
 You will get a shell inside the container. That’s it. If you want to run a specific script or program in an automated manner, add it as argument tonsenter. It works a bit like chroot, except that it works with containers instead of plain directories.     
