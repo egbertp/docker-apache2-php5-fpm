@@ -34,9 +34,10 @@ ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 RUN chown -R www-data:www-data /var/www
 
+ADD apache/000-default /etc/apache2/sites-enabled/000-default
+
 ADD supervisor/apache.conf /etc/supervisor/conf.d/apache.conf
 
-ADD nginx/default /etc/nginx/sites-enabled/default
 
 
 EXPOSE 80
