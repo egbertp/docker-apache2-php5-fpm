@@ -69,12 +69,12 @@ can drop us into a shell inside of the container's filesystem and inspect its
 running processes. Unfortunately it only works on linux, so we will create a
 ``docker-enter`` script that works for us over ssh.
 
-#. Build and install ``nsenter``. You can run this from the host because the
+### Build and install ``nsenter``. You can run this from the host because the
    bind-mounting is still only from the VM::
 
      docker run --rm -v /var/lib/boot2docker:/target jpetazzo/nsenter
 
-#. Setup ``docker-enter`` script for easy inspection in OS X::
+### Setup ``docker-enter`` script for easy inspection in OS X::
 
      cat > /usr/local/bin/docker-enter <<'EOF'
      #!/bin/bash
