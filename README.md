@@ -10,7 +10,7 @@ Usage:
 ======
 
   ```
-    docker run -d --name=lemp -v /path/to/www/:/var/www/ quay.io/egbertp/apache2-php5-fpm:latest
+    docker run -d --name=apache2-php5-fpm -v /path/to/www/:/var/www/ quay.io/egbertp/apache2-php5-fpm:latest
   ```
 
 
